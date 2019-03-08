@@ -1,0 +1,17 @@
+<div class="container-fluid">
+
+  
+
+  <div class="row">
+    <div class="list-group">
+
+      <% @scanners.each_with_index { |s,i| %>
+
+        <a href="<%= url_for( :action => :enable, :query => { :scanner => i } ) %>" class="list-group-item">
+            <%= @scanners[i].friendlyName %>
+        </a>
+
+      <% } %>
+    </div>
+  </div>
+</div>
