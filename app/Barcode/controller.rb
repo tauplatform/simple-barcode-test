@@ -9,6 +9,10 @@ class BarcodeController < Rho::RhoController
 
   @@scanner = nil
 
+  def self.scanner
+    @@scanner
+  end
+
   def index
 
     

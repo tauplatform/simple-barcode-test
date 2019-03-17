@@ -9,7 +9,29 @@ class AppApplication < Rho::RhoApplication
     #@@toolbar = nil
     super
 
+    Rho::Application.setApplicationNotify(
+      -> (x) {
 
+          puts ">>> App notify: #{x}"
+
+          if (x['applicationEvent']==Rho::Application::APP_EVENT_ACTIVATED)
+            timer = Rho::Timer.create
+            timer.start(5000, -> (x) {
+
+              scanner = BarcodeController.scanner
+              location = Rho::WebView.currentLocation
+
+              puts "Active scanner: #{scanner}, app location: #{location}"
+
+              if location =~ /Barcode\/enable/
+                sObj = Rho::Barcode.enumerate[scanner];
+                sObj.enable( {}, '/app/Barcode/barcode_callback' )
+              end
+
+              timer.stop
+            })
+          end
+      } )
     
   end
 end

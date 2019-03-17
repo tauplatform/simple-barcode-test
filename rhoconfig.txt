@@ -126,7 +126,7 @@ local_server_port = 9000
 jqtouch_mode=1
 
 # disables barcode on page navigation on android, default value is 1, means barcode will be disabled on page navigation
-#disable_scanner_during_navigation = 1
+#disable_scanner_during_navigation = 0
 
 #dealy in seconds for splash screen image
 splash_screen='zoom;delay=3'
@@ -152,3 +152,5 @@ use_kinetic_scroll_on_windows = 1
 
 #external_server_access = 1
 # enable external access to rhodes http server
+
+Barcode.ReleaseEMDKOnPause = 1
